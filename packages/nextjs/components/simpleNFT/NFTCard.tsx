@@ -7,7 +7,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
   const [transferToAddress, setTransferToAddress] = useState("");
 
   const { writeAsync: transferNFT } = useScaffoldContractWrite({
-    contractName: "GreenpillBRCollectible",
+    contractName: "YourCollectible",
     functionName: "transferFrom",
     args: [nft.owner, transferToAddress, BigInt(nft.id.toString())],
   });

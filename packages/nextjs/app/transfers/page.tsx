@@ -6,7 +6,7 @@ import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
 
 const Transfers: NextPage = () => {
   const { data: transferEvents, isLoading } = useScaffoldEventHistory({
-    contractName: "GreenpillBRCollectible",
+    contractName: "YourCollectible",
     eventName: "Transfer",
     // Specify the starting block number from which to read events, this is a bigint.
     fromBlock: 5595770n,

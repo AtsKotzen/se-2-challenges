@@ -4,25 +4,25 @@
 
 import { ethers } from "hardhat";
 import { expect } from "chai";
-import { GreenpillBRCollectible } from "../typechain-types";
+import { YourCollectible } from "../typechain-types";
 
 describe("🚩 Challenge 0: 🎟 Simple NFT Example 🤓", function () {
-  let myContract: GreenpillBRCollectible;
+  let myContract: YourCollectible;
 
-  describe("GreenpillBRCollectible", function () {
+  describe("YourCollectible", function () {
     const contractAddress = process.env.CONTRACT_ADDRESS;
 
     let contractArtifact: string;
     if (contractAddress) {
       // For the autograder.
-      contractArtifact = `contracts/download-${contractAddress}.sol:GreenpillBRCollectible`;
+      contractArtifact = `contracts/download-${contractAddress}.sol:YourCollectible`;
     } else {
-      contractArtifact = "contracts/GreenpillBRCollectible.sol:GreenpillBRCollectible";
+      contractArtifact = "contracts/YourCollectible.sol:YourCollectible";
     }
 
     it("Should deploy the contract", async function () {
-      const GreenpillBRCollectible = await ethers.getContractFactory(contractArtifact);
-      myContract = await GreenpillBRCollectible.deploy();
+      const YourCollectible = await ethers.getContractFactory(contractArtifact);
+      myContract = await YourCollectible.deploy();
       console.log("\t"," 🛰  Contract deployed on", await myContract.getAddress());
     });
 

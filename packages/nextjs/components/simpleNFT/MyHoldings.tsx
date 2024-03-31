@@ -19,12 +19,12 @@ export const MyHoldings = () => {
   const [myAllCollectibles, setMyAllCollectibles] = useState<Collectible[]>([]);
   const [allCollectiblesLoading, setAllCollectiblesLoading] = useState(false);
 
-  const { data: GreenpillBRCollectibleContract } = useScaffoldContract({
-    contractName: "GreenpillBRCollectible",
+  const { data: YourCollectibleContract } = useScaffoldContract({
+    contractName: "YourCollectible",
   });
 
   const { data: myTotalBalance } = useScaffoldContractRead({
-    contractName: "GreenpillBRCollectible",
+    contractName: "YourCollectible",
     functionName: "balanceOf",
     args: [connectedAddress],
     watch: true,
@@ -32,7 +32,7 @@ export const MyHoldings = () => {
 
   useEffect(() => {
     const updateMyCollectibles = async (): Promise<void> => {
-      if (myTotalBalance === undefined || GreenpillBRCollectibleContract === undefined || connectedAddress === undefined)
+      if (myTotalBalance === undefined || YourCollectibleContract === undefined || connectedAddress === undefined)
         return;
 
       setAllCollectiblesLoading(true);
@@ -40,12 +40,12 @@ export const MyHoldings = () => {
       const totalBalance = parseInt(myTotalBalance.toString());
       for (let tokenIndex = 0; tokenIndex < totalBalance; tokenIndex++) {
         try {
-          const tokenId = await GreenpillBRCollectibleContract.read.tokenOfOwnerByIndex([
+          const tokenId = await YourCollectibleContract.read.tokenOfOwnerByIndex([
             connectedAddress,
             BigInt(tokenIndex),
           ]);
 
-          const tokenURI = await GreenpillBRCollectibleContract.read.tokenURI([tokenId]);
+          const tokenURI = await YourCollectibleContract.read.tokenURI([tokenId]);
 
           const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
 

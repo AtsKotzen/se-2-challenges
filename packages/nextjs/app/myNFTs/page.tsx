@@ -13,13 +13,13 @@ const MyNFTs: NextPage = () => {
   const { address: connectedAddress, isConnected, isConnecting } = useAccount();
 
   const { writeAsync: mintItem } = useScaffoldContractWrite({
-    contractName: "GreenpillBRCollectible",
+    contractName: "YourCollectible",
     functionName: "mintItem",
     args: [connectedAddress, ""],
   });
 
   const { data: tokenIdCounter } = useScaffoldContractRead({
-    contractName: "GreenpillBRCollectible",
+    contractName: "YourCollectible",
     functionName: "tokenIdCounter",
     watch: true,
     cacheOnBlock: true,
